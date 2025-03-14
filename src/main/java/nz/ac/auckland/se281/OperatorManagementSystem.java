@@ -9,17 +9,23 @@ public class OperatorManagementSystem {
 
   public void searchOperators(String keyword) {
 
-
-    MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
+    MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", "."); //hard coded, need fixing
   }
 
   public void createOperator(String operatorName, String location) {
 
-    Location locationFound = Location.fromString(location);
-    String locationString = locationFound.getFullName();
     
+    Location locationFound = Location.fromString(location);
 
-    MessageCli.OPERATOR_CREATED.printMessage(operatorName, locationString);
+    Operator operator = new Operator (operatorName, locationFound);
+
+    String locationString = locationFound.getFullName(); // creates a string of the location with the english and te reo names
+    
+    //creating operator ID
+    String operatorId = operator.createOperatorId();
+
+
+    MessageCli.OPERATOR_CREATED.printMessage(operatorName, operatorId, locationString);
   }
 
   public void viewActivities(String operatorId) {
