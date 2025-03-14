@@ -15,17 +15,20 @@ public class Operator {
 
   public String createOperatorId(){
 
-    String operatorId = "";
+    String operatorInitials = "";
+    String locationAbbrev = location.getLocationAbbreviation();
+    String threeDigitNum = "001"; //hard coded number, needs fixing
+
     //Creating the operator initals by splitting it and then concatenating the initial characters into a string
     String[] words = operatorName.split(" ");
 
     for (String word : words) {
       char firstChar = word.charAt(0);
       //concatenating firstChar into operatorId
-      operatorId = operatorId + firstChar; 
+      operatorInitials = operatorInitials + firstChar; 
     }
 
-
+    operatorId = operatorInitials  + "-" + locationAbbrev + "-" + threeDigitNum;
     return operatorId;
   }
 }
