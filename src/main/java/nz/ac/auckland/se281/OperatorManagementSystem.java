@@ -1,18 +1,25 @@
 package nz.ac.auckland.se281;
 
+import nz.ac.auckland.se281.Types.Location;
+
 public class OperatorManagementSystem {
 
   // Do not change the parameters of the constructor
   public OperatorManagementSystem() {}
 
   public void searchOperators(String keyword) {
-    // TODO implement
+
 
     MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
   }
 
   public void createOperator(String operatorName, String location) {
-    // TODO implement
+
+    Location locationFound = Location.fromString(location);
+    String locationString = locationFound.getFullName();
+    
+
+    MessageCli.OPERATOR_CREATED.printMessage(operatorName, locationString);
   }
 
   public void viewActivities(String operatorId) {
