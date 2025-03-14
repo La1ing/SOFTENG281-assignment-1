@@ -1,11 +1,22 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+
 import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorManagementSystem {
 
+  private ArrayList<Operator> managementSystem;
+
   // Do not change the parameters of the constructor
-  public OperatorManagementSystem() {}
+  public OperatorManagementSystem() {
+    managementSystem = new ArrayList<Operator>();
+  }
+
+  //addOperator test pending
+  private void addOperator(Operator op) {
+    managementSystem.add(op);
+  }
 
   public void searchOperators(String keyword) {
 
@@ -14,9 +25,7 @@ public class OperatorManagementSystem {
 
   public void createOperator(String operatorName, String location) {
 
-    
     Location locationFound = Location.fromString(location);
-
     Operator operator = new Operator (operatorName, locationFound);
 
     String locationString = locationFound.getFullName(); // creates a string of the location with the english and te reo names
@@ -24,6 +33,8 @@ public class OperatorManagementSystem {
     //creating operator ID
     String operatorId = operator.createOperatorId();
 
+    //Add operator to managementSystem 
+    addOperator(operator);
 
     MessageCli.OPERATOR_CREATED.printMessage(operatorName, operatorId, locationString);
   }
