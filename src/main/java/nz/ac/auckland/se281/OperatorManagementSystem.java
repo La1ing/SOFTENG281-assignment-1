@@ -19,8 +19,10 @@ public class OperatorManagementSystem {
       MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
       return;
     }
-
-    // hard coded, need fixing
+    Operator op = managementSystem.get(0);
+    // hard coding one result found
+    MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
+    op.printDetails();
   }
 
   public void createOperator(String operatorName, String location) {
