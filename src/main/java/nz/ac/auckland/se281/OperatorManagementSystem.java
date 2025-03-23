@@ -1,7 +1,6 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
-
 import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorManagementSystem {
@@ -13,28 +12,32 @@ public class OperatorManagementSystem {
     managementSystem = new ArrayList<Operator>();
   }
 
-  //addOperator test pending
-  private void addOperator(Operator op) {
-    managementSystem.add(op);
-  }
-
   public void searchOperators(String keyword) {
 
-    MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", "."); //hard coded, need fixing
+    // case when there are no operators
+    if (managementSystem.isEmpty()) {
+      MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
+      return;
+    }
+
+    // hard coded, need fixing
   }
 
   public void createOperator(String operatorName, String location) {
 
     Location locationFound = Location.fromString(location);
-    Operator operator = new Operator (operatorName, locationFound);
+    Operator operator = new Operator(operatorName, locationFound);
 
-    String locationString = locationFound.getFullName(); // creates a string of the location with the english and te reo names
-    
-    //creating operator ID
+    String locationString =
+        locationFound
+            .getFullName(); // creates a string of the location with the english and te reo names
+
+    // creating operator ID
     String operatorId = operator.createOperatorId();
 
-    //Add operator to managementSystem 
-    addOperator(operator);
+    // Add operator to managementSystem
+    managementSystem.add(
+        operator); // MOVED ADD OPERATOR INTO CREATE OPERATOR METHOD (not sure if it works)
 
     MessageCli.OPERATOR_CREATED.printMessage(operatorName, operatorId, locationString);
   }
