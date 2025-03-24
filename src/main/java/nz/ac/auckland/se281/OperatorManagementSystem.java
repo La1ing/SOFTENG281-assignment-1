@@ -8,20 +8,25 @@ public class OperatorManagementSystem {
 
   // Do not change the parameters of the constructor
   public OperatorManagementSystem() {
-    operatorList = new OperatorList();
+    this.operatorList = new OperatorList();
   }
 
   public void searchOperators(String keyword) {
 
     // Case when there are no operators
-    if (operatorList.noOperators()) {
+    if (this.operatorList.noOperators()) {
       MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
       return;
     }
-    Operator op = operatorList.getOperator(0);
-    // hard coding one result found
-    MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
-    op.printDetails();
+
+    // Finding amount of indexes in operatorList (search not included yet)
+    int size = operatorList.getSize();
+
+    if (size == 1) {
+      Operator op = this.operatorList.getOperator(0);
+      MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
+      op.printDetails();
+    }
   }
 
   public void createOperator(String operatorName, String location) {
@@ -36,14 +41,14 @@ public class OperatorManagementSystem {
     String operatorId = operator.createOperatorId();
 
     // Check for duplicate entry
-    if (operatorList.isDuplicate(operator)) {
+    if (this.operatorList.isDuplicate(operator)) {
       MessageCli.OPERATOR_NOT_CREATED_ALREADY_EXISTS_SAME_LOCATION.printMessage(
           operatorName, locationString);
       return;
     }
 
     // Add operator to managementSystem
-    operatorList.addToList(operator);
+    this.operatorList.addToList(operator);
 
     MessageCli.OPERATOR_CREATED.printMessage(operatorName, operatorId, locationString);
   }

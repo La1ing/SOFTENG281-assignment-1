@@ -10,21 +10,21 @@ public class Operator {
   private String operatorId;
 
   public Operator(String on, Location loc) {
-    operatorName = on;
-    location = loc;
+    this.operatorName = on;
+    this.location = loc;
   }
 
   public String createOperatorId() {
 
     String operatorInitials = "";
-    String locationAbbrev = location.getLocationAbbreviation();
+    String locationAbbrev = this.location.getLocationAbbreviation();
     // hard coded but improved
-    operatorNum = 1;
-    String threeDigitNum = String.format("%03d", operatorNum);
+    this.operatorNum = 1;
+    String threeDigitNum = String.format("%03d", this.operatorNum);
 
     // Creating the operator initals by splitting it and then concatenating the initial characters
     // into a string
-    String[] words = operatorName.split(" ");
+    String[] words = this.operatorName.split(" ");
 
     for (String word : words) {
       char firstChar = word.charAt(0);
@@ -32,19 +32,20 @@ public class Operator {
       operatorInitials = operatorInitials + firstChar;
     }
 
-    operatorId = operatorInitials + "-" + locationAbbrev + "-" + threeDigitNum;
-    return operatorId;
+    this.operatorId = operatorInitials + "-" + locationAbbrev + "-" + threeDigitNum;
+    return this.operatorId;
   }
 
   public void printDetails() {
-    MessageCli.OPERATOR_ENTRY.printMessage(operatorName, operatorId, location.getFullName());
+    MessageCli.OPERATOR_ENTRY.printMessage(
+        this.operatorName, this.operatorId, this.location.getFullName());
   }
 
   public Location getLocation() {
-    return location;
+    return this.location;
   }
 
   public String getOperatorName() {
-    return operatorName;
+    return this.operatorName;
   }
 }

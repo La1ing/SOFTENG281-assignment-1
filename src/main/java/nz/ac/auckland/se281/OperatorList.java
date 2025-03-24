@@ -8,30 +8,34 @@ public class OperatorList {
 
   // Initialising operatorList
   public OperatorList() {
-    operatorList = new ArrayList<>();
+    this.operatorList = new ArrayList<>();
   }
 
   public void addToList(Operator op) {
-    operatorList.add(op);
+    this.operatorList.add(op);
   }
 
   // check if operatorList is empty
   public boolean noOperators() {
-    return operatorList.isEmpty();
+    return this.operatorList.isEmpty();
   }
 
   public Operator getOperator(int i) {
-    return operatorList.get(i);
+    return this.operatorList.get(i);
   }
 
   // Checks for duplicate entry by matching name and location
   public boolean isDuplicate(Operator op) {
-    for (Operator operator : operatorList) {
+    for (Operator operator : this.operatorList) {
       if (op.getLocation().equals(operator.getLocation())
           && op.getOperatorName().equals(operator.getOperatorName())) {
         return true;
       }
     }
     return false;
+  }
+
+  public int getSize() {
+    return this.operatorList.size();
   }
 }
