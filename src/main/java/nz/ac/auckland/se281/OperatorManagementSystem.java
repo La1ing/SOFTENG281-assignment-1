@@ -26,6 +26,12 @@ public class OperatorManagementSystem {
       Operator op = this.operatorList.getOperator(0);
       MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
       op.printDetails();
+    } else {
+      MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
+      for (int i = 0; i < size; i++) {
+        Operator op = this.operatorList.getOperator(i);
+        op.printDetails();
+      }
     }
   }
 
