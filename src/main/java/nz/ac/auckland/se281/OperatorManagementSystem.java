@@ -23,10 +23,12 @@ public class OperatorManagementSystem {
     int size = operatorList.getSize();
 
     if (size == 1) {
+      // case for 1 operator
       Operator op = this.operatorList.getOperator(0);
       MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
       op.printDetails();
     } else {
+      // case for multiple operators
       MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
       for (int i = 0; i < size; i++) {
         Operator op = this.operatorList.getOperator(i);
@@ -38,7 +40,8 @@ public class OperatorManagementSystem {
   public void createOperator(String operatorName, String location) {
 
     Location locationFound = Location.fromString(location);
-    Operator operator = new Operator(operatorName, locationFound);
+    int operatorNum = 1 +operatorList.opsInSameLoc(locationFound);
+    Operator operator = new Operator(operatorName, locationFound, operatorNum);
 
     // Creates a string of the location with the english and te reo names
     String locationString = locationFound.getFullName();

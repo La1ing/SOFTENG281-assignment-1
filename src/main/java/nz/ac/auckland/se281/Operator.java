@@ -9,9 +9,10 @@ public class Operator {
   private Integer operatorNum;
   private String operatorId;
 
-  public Operator(String on, Location loc) {
+  public Operator(String on, Location loc, Integer num) {
     this.operatorName = on;
     this.location = loc;
+    this.operatorNum = num;
   }
 
   public String createOperatorId() {
@@ -19,7 +20,7 @@ public class Operator {
     String operatorInitials = "";
     String locationAbbrev = this.location.getLocationAbbreviation();
     // hard coded but improved
-    this.operatorNum = 1;
+    // this.operatorNum = 1 + opsInSameLoc();
     String threeDigitNum = String.format("%03d", this.operatorNum);
 
     // Creating the operator initals by splitting it and then concatenating the initial characters

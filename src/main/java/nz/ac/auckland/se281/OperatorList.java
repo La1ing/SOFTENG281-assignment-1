@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorList {
 
@@ -37,5 +38,15 @@ public class OperatorList {
 
   public int getSize() {
     return this.operatorList.size();
+  }
+
+  public int opsInSameLoc(Location loc) {
+    int sameLoc = 0;
+    for (Operator operator : this.operatorList) {
+      if (loc.equals(operator.getLocation())) {
+        sameLoc++;
+      }
+    }
+    return sameLoc;
   }
 }
