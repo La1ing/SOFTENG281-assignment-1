@@ -6,6 +6,7 @@ public class Operator {
 
   private String operatorName;
   private Location location;
+  private Integer operatorNum;
   private String operatorId;
 
   public Operator(String on, Location loc) {
@@ -17,7 +18,9 @@ public class Operator {
 
     String operatorInitials = "";
     String locationAbbrev = location.getLocationAbbreviation();
-    String threeDigitNum = "001"; // hard coded number, needs fixing
+    // hard coded but improved
+    operatorNum = 1;
+    String threeDigitNum = String.format("%03d", operatorNum);
 
     // Creating the operator initals by splitting it and then concatenating the initial characters
     // into a string
