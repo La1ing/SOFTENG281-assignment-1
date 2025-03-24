@@ -1,25 +1,24 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorManagementSystem {
 
-  private ArrayList<Operator> managementSystem;
+  private OperatorList operatorList;
 
   // Do not change the parameters of the constructor
   public OperatorManagementSystem() {
-    managementSystem = new ArrayList<Operator>();
+    operatorList = new OperatorList();
   }
 
   public void searchOperators(String keyword) {
 
     // case when there are no operators
-    if (managementSystem.isEmpty()) {
+    if (operatorList.noOperators()) {
       MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
       return;
     }
-    Operator op = managementSystem.get(0);
+    Operator op = operatorList.getOperator(0);
     // hard coding one result found
     MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
     op.printDetails();
@@ -30,16 +29,14 @@ public class OperatorManagementSystem {
     Location locationFound = Location.fromString(location);
     Operator operator = new Operator(operatorName, locationFound);
 
-    String locationString =
-        locationFound
-            .getFullName(); // creates a string of the location with the english and te reo names
+    // creates a string of the location with the english and te reo names
+    String locationString = locationFound.getFullName();
 
     // creating operator ID
     String operatorId = operator.createOperatorId();
 
     // Add operator to managementSystem
-    managementSystem.add(
-        operator); // MOVED ADD OPERATOR INTO CREATE OPERATOR METHOD (not sure if it works)
+    operatorList.addToList(operator);
 
     MessageCli.OPERATOR_CREATED.printMessage(operatorName, operatorId, locationString);
   }
