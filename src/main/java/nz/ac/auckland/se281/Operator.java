@@ -25,7 +25,7 @@ public class Operator {
 
     for (String word : words) {
       char firstChar = word.charAt(0);
-      // concatenating firstChar into operatorId
+      // Concatenating firstChar into operatorId
       operatorInitials = operatorInitials + firstChar;
     }
 
@@ -35,5 +35,13 @@ public class Operator {
 
   public void printDetails() {
     MessageCli.OPERATOR_ENTRY.printMessage(operatorName, operatorId, location.getFullName());
+  }
+
+  public Location getLocation() {
+    return location;
+  }
+
+  public String getOperatorName() {
+    return operatorName;
   }
 }

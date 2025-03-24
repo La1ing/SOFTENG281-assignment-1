@@ -13,7 +13,7 @@ public class OperatorManagementSystem {
 
   public void searchOperators(String keyword) {
 
-    // case when there are no operators
+    // Case when there are no operators
     if (operatorList.noOperators()) {
       MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
       return;
@@ -29,11 +29,18 @@ public class OperatorManagementSystem {
     Location locationFound = Location.fromString(location);
     Operator operator = new Operator(operatorName, locationFound);
 
-    // creates a string of the location with the english and te reo names
+    // Creates a string of the location with the english and te reo names
     String locationString = locationFound.getFullName();
 
-    // creating operator ID
+    // Creating operator ID
     String operatorId = operator.createOperatorId();
+
+    // Check for duplicate entry
+    if (operatorList.isDuplicate(operator)) {
+      MessageCli.OPERATOR_NOT_CREATED_ALREADY_EXISTS_SAME_LOCATION.printMessage(
+          operatorName, locationString);
+      return;
+    }
 
     // Add operator to managementSystem
     operatorList.addToList(operator);
