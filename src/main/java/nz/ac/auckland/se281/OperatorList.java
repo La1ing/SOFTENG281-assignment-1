@@ -49,4 +49,24 @@ public class OperatorList {
     }
     return sameLoc;
   }
+
+  public ArrayList<Integer> getMatchingOperators(String keyword) {
+    ArrayList<Integer> indexes = new ArrayList<>();
+
+    // Case for if "*", then returns all indexes
+    if (keyword.trim().equals("*")) {
+      for (int i = 0; i < operatorList.size(); i++) {
+        indexes.add(1);
+      }
+      return indexes;
+    }
+    // SEARCH NEEDS TO BE IMPLEMENTED
+    // for(Operator op : operatorList){
+    //   if (){
+
+    //   }
+    // }
+
+    return indexes;
+  }
 }

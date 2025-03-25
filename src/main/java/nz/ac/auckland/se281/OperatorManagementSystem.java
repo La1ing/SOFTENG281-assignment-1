@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorManagementSystem {
@@ -19,8 +20,9 @@ public class OperatorManagementSystem {
       return;
     }
 
-    // Finding amount of indexes in operatorList (search not included yet)
-    int size = operatorList.getSize();
+    // Finding amount of indexes in operatorList (improved to account for "*" case)
+    ArrayList<Integer> matchingOperators = operatorList.getMatchingOperators(keyword);
+    int size = matchingOperators.size();
 
     if (size == 1) {
       // case for 1 operator
@@ -30,7 +32,7 @@ public class OperatorManagementSystem {
     } else {
       // case for multiple operators
       MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
-      for (int i = 0; i < size; i++) {
+      for (int i : matchingOperators) {
         Operator op = this.operatorList.getOperator(i);
         op.printDetails();
       }
@@ -40,7 +42,7 @@ public class OperatorManagementSystem {
   public void createOperator(String operatorName, String location) {
 
     Location locationFound = Location.fromString(location);
-    int operatorNum = 1 +operatorList.opsInSameLoc(locationFound);
+    int operatorNum = 1 + operatorList.opsInSameLoc(locationFound);
     Operator operator = new Operator(operatorName, locationFound, operatorNum);
 
     // Creates a string of the location with the english and te reo names
