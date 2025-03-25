@@ -60,15 +60,17 @@ public class OperatorList {
       }
       return indexes;
     }
-    // SEARCH NEEDS TO BE IMPLEMENTED
+
     for (int i = 0; i < operatorList.size(); i++) {
       Operator op = operatorList.get(i);
       ArrayList<String> details = op.getOperatorDetails();
 
       for (String detail : details) {
-        if (detail.toLowerCase().contains(keyword.trim().toLowerCase())) {
+        if (detail
+            .toLowerCase()
+            .contains(keyword.trim().toLowerCase())) { // Matching details (not case sensitive)
           indexes.add(i);
-          break;
+          break; // Moving to next iteration of detail loop
         }
       }
     }
