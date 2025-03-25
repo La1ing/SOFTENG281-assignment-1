@@ -15,7 +15,7 @@ public class OperatorManagementSystem {
   public void searchOperators(String keyword) {
 
     // Case when there are no operators
-    if (this.operatorList.noOperators()) {
+    if (this.operatorList.containsNoOperators()) {
       MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
       return;
     }

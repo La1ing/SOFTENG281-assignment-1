@@ -17,7 +17,7 @@ public class OperatorList {
   }
 
   // check if operatorList is empty
-  public boolean noOperators() {
+  public boolean containsNoOperators() {
     return this.operatorList.isEmpty();
   }
 
