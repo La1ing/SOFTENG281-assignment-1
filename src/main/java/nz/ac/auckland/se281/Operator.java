@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.Location;
 
 public class Operator {
@@ -48,5 +49,14 @@ public class Operator {
 
   public String getOperatorName() {
     return this.operatorName;
+  }
+
+  public ArrayList<String> getOperatorDetails() {
+    ArrayList<String> details = new ArrayList<>();
+    details.add(this.location.getNameEnglish());
+    details.add(this.location.getNameTeReo());
+    details.add(this.location.getLocationAbbreviation());
+    details.add(this.operatorName);
+    return details;
   }
 }

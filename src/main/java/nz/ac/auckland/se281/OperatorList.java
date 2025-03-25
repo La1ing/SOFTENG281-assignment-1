@@ -56,16 +56,22 @@ public class OperatorList {
     // Case for if "*", then returns all indexes
     if (keyword.trim().equals("*")) {
       for (int i = 0; i < operatorList.size(); i++) {
-        indexes.add(1);
+        indexes.add(i);
       }
       return indexes;
     }
     // SEARCH NEEDS TO BE IMPLEMENTED
-    // for(Operator op : operatorList){
-    //   if (){
+    for (int i = 0; i < operatorList.size(); i++) {
+      Operator op = operatorList.get(i);
+      ArrayList<String> details = op.getOperatorDetails();
 
-    //   }
-    // }
+      for (String detail : details) {
+        if (detail.toLowerCase().contains(keyword.trim().toLowerCase())) {
+          indexes.add(i);
+          break;
+        }
+      }
+    }
 
     return indexes;
   }
