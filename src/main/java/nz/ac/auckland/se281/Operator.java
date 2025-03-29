@@ -20,8 +20,7 @@ public class Operator {
 
     String operatorInitials = "";
     String locationAbbrev = this.location.getLocationAbbreviation();
-    // hard coded but improved
-    // this.operatorNum = 1 + opsInSameLoc();
+
     String threeDigitNum = String.format("%03d", this.operatorNum);
 
     // Creating the operator initals by splitting it and then concatenating the initial characters

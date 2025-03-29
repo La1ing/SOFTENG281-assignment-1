@@ -989,6 +989,16 @@ public class MainTest {
       assertDoesNotContain("There is", true);
       assertDoesNotContain("There are", true);
     }
+
+    @Test
+    public void T4_03_invalid_operator_name_2_words() throws Exception {
+      runCommands(CREATE_OPERATOR, "'Meow Meow'", "'AKL'", EXIT);
+
+      assertContains("Operator not created: 'Meow Meow' is not a valid operator name.");
+      assertDoesNotContain("Successfully created operator", true);
+      assertDoesNotContain("There is", true);
+      assertDoesNotContain("There are", true);
+    }
   }
 
   private static final Object[] CREATE_14_OPERATORS =
