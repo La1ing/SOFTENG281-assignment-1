@@ -999,6 +999,16 @@ public class MainTest {
       assertDoesNotContain("There is", true);
       assertDoesNotContain("There are", true);
     }
+
+    @Test
+    public void T4_04_invalid_location_name() throws Exception {
+      runCommands(CREATE_OPERATOR, "'Meow Meow Meow'", "'AUC'", EXIT);
+
+      assertContains("Operator not created: 'AUC' is an invalid location.");
+      assertDoesNotContain("Successfully created operator", true);
+      assertDoesNotContain("There is", true);
+      assertDoesNotContain("There are", true);
+    }
   }
 
   private static final Object[] CREATE_14_OPERATORS =

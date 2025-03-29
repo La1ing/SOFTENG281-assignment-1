@@ -45,13 +45,18 @@ public class OperatorManagementSystem {
 
     // Checking for valid operator name
     String[] words = operatorName.split(" ");
-
     if (words.length < 3) {
       MessageCli.OPERATOR_NOT_CREATED_INVALID_OPERATOR_NAME.printMessage(operatorName);
       return;
     }
 
+    // Checking for valid location
     Location locationFound = Location.fromString(location);
+    if (locationFound == null) {
+      MessageCli.OPERATOR_NOT_CREATED_INVALID_LOCATION.printMessage(location);
+      return;
+    }
+
     int operatorNum = 1 + operatorList.opsInSameLoc(locationFound);
     Operator operator = new Operator(operatorName, locationFound, operatorNum);
 
