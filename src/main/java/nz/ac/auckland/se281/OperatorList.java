@@ -29,7 +29,7 @@ public class OperatorList {
   public boolean isDuplicate(Operator op) {
     for (Operator operator : this.operatorList) {
       if (op.getLocation().equals(operator.getLocation())
-          && op.getOperatorName().equals(operator.getOperatorName())) {
+          && op.getOperatorName().equalsIgnoreCase(operator.getOperatorName())) {
         return true;
       }
     }

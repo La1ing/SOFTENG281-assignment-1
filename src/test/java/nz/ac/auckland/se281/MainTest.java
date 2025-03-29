@@ -1009,6 +1009,33 @@ public class MainTest {
       assertDoesNotContain("There is", true);
       assertDoesNotContain("There are", true);
     }
+
+    @Test
+    public void T4_05_duplicate_lowercase_name() throws Exception {
+      runCommands(
+          CREATE_OPERATOR,
+          "'West Auckland Camel Treks'",
+          "'AKL'", //
+          CREATE_OPERATOR,
+          "'west auckland camel treks'",
+          "'AKL'", //
+          SEARCH_OPERATORS,
+          "*", //
+          EXIT);
+
+      assertContains(
+          "Successfully created operator 'West Auckland Camel Treks' ('WACT-AKL-001') located in"
+              + " 'Auckland | Tāmaki Makaurau'.");
+      assertContains(
+          "Operator not created: the operator name 'west auckland camel treks' already exists same"
+              + " location for 'Auckland | Tāmaki Makaurau'.");
+      assertContains("There is 1 matching operator found:");
+      assertContains(
+          "* West Auckland Camel Treks ('WACT-AKL-001' located in 'Auckland | Tāmaki"
+              + " Makaurau')");
+      assertDoesNotContain("002", true);
+      assertDoesNotContain("There are", true);
+    }
   }
 
   private static final Object[] CREATE_14_OPERATORS =
