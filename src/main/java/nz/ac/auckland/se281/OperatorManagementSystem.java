@@ -41,6 +41,7 @@ public class OperatorManagementSystem {
 
   public void createOperator(String operatorName, String location) {
 
+    operatorName = operatorName.trim(); // trim initial and trailing whitespaces
     Location locationFound = Location.fromString(location);
     int operatorNum = 1 + operatorList.opsInSameLoc(locationFound);
     Operator operator = new Operator(operatorName, locationFound, operatorNum);

@@ -967,7 +967,28 @@ public class MainTest {
     public void reset() {}
 
     @Test
-    public void T4_01_add_your_own_tests_as_needed() throws Exception {}
+    public void T4_01_create_operator_lowercase() throws Exception {
+      runCommands(CREATE_OPERATOR, "'meow meow cat'", "'AKL'", EXIT);
+
+      assertContains(
+          "Successfully created operator 'meow meow cat' ('MMC-AKL-001') located in"
+              + " 'Auckland | Tāmaki Makaurau'.");
+      assertDoesNotContain("Operator not created", true);
+      assertDoesNotContain("There is", true);
+      assertDoesNotContain("There are", true);
+    }
+
+    @Test
+    public void T4_02_create_operator_leading_and_trailing_whitespaces() throws Exception {
+      runCommands(CREATE_OPERATOR, "'    West Auckland Camel Treks      '", "'AKL'", EXIT);
+
+      assertContains(
+          "Successfully created operator 'West Auckland Camel Treks' ('WACT-AKL-001') located in"
+              + " 'Auckland | Tāmaki Makaurau'.");
+      assertDoesNotContain("Operator not created", true);
+      assertDoesNotContain("There is", true);
+      assertDoesNotContain("There are", true);
+    }
   }
 
   private static final Object[] CREATE_14_OPERATORS =

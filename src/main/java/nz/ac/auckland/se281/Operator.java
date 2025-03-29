@@ -34,6 +34,8 @@ public class Operator {
       operatorInitials = operatorInitials + firstChar;
     }
 
+    operatorInitials = operatorInitials.toUpperCase();
+
     this.operatorId = operatorInitials + "-" + locationAbbrev + "-" + threeDigitNum;
     return this.operatorId;
   }
