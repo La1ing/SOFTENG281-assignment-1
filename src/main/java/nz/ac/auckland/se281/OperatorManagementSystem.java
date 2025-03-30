@@ -29,6 +29,9 @@ public class OperatorManagementSystem {
       Operator op = this.operatorList.getOperator(0);
       MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
       op.printDetails();
+    } else if (size == 0) {
+      // case for 0 operators found
+      MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
     } else {
       // case for multiple operators
       MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
