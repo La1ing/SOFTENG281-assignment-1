@@ -44,8 +44,7 @@ public class OperatorManagementSystem {
     operatorName = operatorName.trim(); // trim initial and trailing whitespaces
 
     // Checking for valid operator name
-    String[] words = operatorName.split(" ");
-    if (words.length < 3) {
+    if (operatorName.length() < 3) {
       MessageCli.OPERATOR_NOT_CREATED_INVALID_OPERATOR_NAME.printMessage(operatorName);
       return;
     }

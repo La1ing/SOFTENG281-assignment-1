@@ -968,10 +968,10 @@ public class MainTest {
 
     @Test
     public void T4_01_create_operator_lowercase() throws Exception {
-      runCommands(CREATE_OPERATOR, "'meow meow cat'", "'AKL'", EXIT);
+      runCommands(CREATE_OPERATOR, "'meo'", "'AKL'", EXIT);
 
       assertContains(
-          "Successfully created operator 'meow meow cat' ('MMC-AKL-001') located in"
+          "Successfully created operator 'meo' ('M-AKL-001') located in"
               + " 'Auckland | Tāmaki Makaurau'.");
       assertDoesNotContain("Operator not created", true);
       assertDoesNotContain("There is", true);
@@ -991,10 +991,10 @@ public class MainTest {
     }
 
     @Test
-    public void T4_03_invalid_operator_name_2_words() throws Exception {
-      runCommands(CREATE_OPERATOR, "'Meow Meow'", "'AKL'", EXIT);
+    public void T4_03_invalid_operator_name_2_chars() throws Exception {
+      runCommands(CREATE_OPERATOR, "'Me'", "'AKL'", EXIT);
 
-      assertContains("Operator not created: 'Meow Meow' is not a valid operator name.");
+      assertContains("Operator not created: 'Me' is not a valid operator name.");
       assertDoesNotContain("Successfully created operator", true);
       assertDoesNotContain("There is", true);
       assertDoesNotContain("There are", true);
