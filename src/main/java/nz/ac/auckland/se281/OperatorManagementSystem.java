@@ -26,7 +26,7 @@ public class OperatorManagementSystem {
 
     if (size == 1) {
       // case for 1 operator
-      Operator op = this.operatorList.getOperator(0);
+      Operator op = this.operatorList.getOperator(matchingOperators.get(0));
       MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
       op.printDetails();
     } else if (size == 0) {
