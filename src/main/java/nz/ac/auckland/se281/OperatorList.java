@@ -3,31 +3,31 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.Location;
 
-public class OperatorList {
+public class OperatorList extends ListTypes<Operator> {
 
-  protected ArrayList<Operator> operatorList;
+  // protected ArrayList<Operator> operatorList;
 
   // Initialising operatorList
   public OperatorList() {
-    this.operatorList = new ArrayList<>();
+    super();
   }
 
-  public void addToList(Operator op) {
+  /*public void addToList(Operator op) {
     this.operatorList.add(op);
-  }
+  }*/
 
   // check if operatorList is empty
-  public boolean containsNoOperators() {
+  /*public boolean containsNoOperators() {
     return this.operatorList.isEmpty();
-  }
+  }*/
 
-  public Operator getOperator(int i) {
+  /*public Operator getOperator(int i) {
     return this.operatorList.get(i);
-  }
+  }*/
 
   // Checks for duplicate entry by matching name and location
   public boolean isDuplicate(Operator op) {
-    for (Operator operator : this.operatorList) {
+    for (Operator operator : this.list) {
       if (op.getLocation().equals(operator.getLocation())
           && op.getOperatorName().equalsIgnoreCase(operator.getOperatorName())) {
         return true;
@@ -36,13 +36,13 @@ public class OperatorList {
     return false;
   }
 
-  public int getSize() {
+  /*public int getSize() {
     return this.operatorList.size();
-  }
+  }*/
 
   public int opsInSameLoc(Location loc) {
     int sameLoc = 0;
-    for (Operator operator : this.operatorList) {
+    for (Operator operator : this.list) {
       if (loc.equals(operator.getLocation())) {
         sameLoc++;
       }
@@ -55,14 +55,14 @@ public class OperatorList {
 
     // Case for if "*", then returns all indexes
     if (keyword.trim().equals("*")) {
-      for (int i = 0; i < operatorList.size(); i++) {
+      for (int i = 0; i < list.size(); i++) {
         indexes.add(i);
       }
       return indexes;
     }
 
-    for (int i = 0; i < operatorList.size(); i++) {
-      Operator op = operatorList.get(i);
+    for (int i = 0; i < list.size(); i++) {
+      Operator op = list.get(i);
       ArrayList<String> details = op.getOperatorDetails();
 
       for (String detail : details) {
@@ -79,7 +79,7 @@ public class OperatorList {
   }
 
   public Operator searchByOperatorId(String operatorId) {
-    for (Operator operator : operatorList) {
+    for (Operator operator : list) {
       if (operator.getOperatorId().equals(operatorId)) {
         return operator;
       }

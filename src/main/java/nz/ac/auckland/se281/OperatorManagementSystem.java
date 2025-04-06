@@ -16,7 +16,7 @@ public class OperatorManagementSystem {
   public void searchOperators(String keyword) {
 
     // Case when there are no operators
-    if (this.operatorList.containsNoOperators()) {
+    if (this.operatorList.containsNoEntries()) {
       MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
       return;
     }
@@ -27,7 +27,7 @@ public class OperatorManagementSystem {
 
     if (size == 1) {
       // case for 1 operator
-      Operator op = this.operatorList.getOperator(matchingOperators.get(0));
+      Operator op = this.operatorList.getEntry(matchingOperators.get(0));
       MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
       op.printDetails();
     } else if (size == 0) {
@@ -37,7 +37,7 @@ public class OperatorManagementSystem {
       // case for multiple operators
       MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
       for (int i : matchingOperators) {
-        Operator op = this.operatorList.getOperator(i);
+        Operator op = this.operatorList.getEntry(i);
         op.printDetails();
       }
     }
@@ -115,6 +115,8 @@ public class OperatorManagementSystem {
             typeFound);
 
     activity.createActivityId();
+
+    // NEED TO ADD ADD TO ACTIVITYLIST
 
     MessageCli.ACTIVITY_CREATED.printMessage(
         activityName, activity.getActivityId(), typeFound.toString(), activity.getOperatorName());
