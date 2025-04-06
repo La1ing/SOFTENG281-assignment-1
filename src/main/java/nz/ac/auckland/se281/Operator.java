@@ -8,7 +8,7 @@ public class Operator {
   protected String operatorName;
   protected Location location;
   protected Integer operatorNum;
-  protected String operatorId;
+  private String operatorId;
 
   public Operator(String on, Location loc, Integer num) {
     this.operatorName = on;
@@ -16,11 +16,10 @@ public class Operator {
     this.operatorNum = num;
   }
 
-  public String createOperatorId() {
+  public void createOperatorId() {
 
     String operatorInitials = "";
     String locationAbbrev = this.location.getLocationAbbreviation();
-
     String threeDigitNum = String.format("%03d", this.operatorNum);
 
     // Creating the operator initals by splitting it and then concatenating the initial characters
@@ -36,7 +35,6 @@ public class Operator {
     operatorInitials = operatorInitials.toUpperCase();
 
     this.operatorId = operatorInitials + "-" + locationAbbrev + "-" + threeDigitNum;
-    return this.operatorId;
   }
 
   public void printDetails() {
@@ -50,6 +48,10 @@ public class Operator {
 
   public String getOperatorName() {
     return this.operatorName;
+  }
+
+  public Integer getOperatorNum() {
+    return this.operatorNum;
   }
 
   public String getOperatorId() {

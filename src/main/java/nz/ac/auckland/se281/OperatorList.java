@@ -78,12 +78,12 @@ public class OperatorList {
     return indexes;
   }
 
-  public boolean containsOperatorId(String operatorId) {
+  public Operator searchByOperatorId(String operatorId) {
     for (Operator operator : operatorList) {
       if (operator.getOperatorId().equals(operatorId)) {
-        return true;
+        return operator;
       }
     }
-    return false;
+    return null;
   }
 }

@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.Types.ActivityType;
 import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorManagementSystem {
@@ -66,7 +67,7 @@ public class OperatorManagementSystem {
     String locationString = locationFound.getFullName();
 
     // Creating operator ID
-    String operatorId = operator.createOperatorId();
+    operator.createOperatorId();
 
     // Check for duplicate entry
     if (this.operatorList.isDuplicate(operator)) {
@@ -78,7 +79,8 @@ public class OperatorManagementSystem {
     // Add operator to managementSystem
     this.operatorList.addToList(operator);
 
-    MessageCli.OPERATOR_CREATED.printMessage(operatorName, operatorId, locationString);
+    MessageCli.OPERATOR_CREATED.printMessage(
+        operatorName, operator.getOperatorId(), locationString);
   }
 
   public void viewActivities(String operatorId) {
@@ -92,10 +94,30 @@ public class OperatorManagementSystem {
       return;
     }
     // Search for matching operatorId in OperatorList
-    if (!operatorList.containsOperatorId(operatorId)) {
+    Operator operator = operatorList.searchByOperatorId(operatorId);
+
+    // Case for no mathcing operator
+    if (operator == null) {
       MessageCli.ACTIVITY_NOT_CREATED_INVALID_OPERATOR_ID.printMessage(operatorId);
       return;
     }
+
+    // Search for matching activity type
+    ActivityType typeFound = ActivityType.fromString(activityType);
+
+    // create activity
+    Activity activity =
+        new Activity(
+            operator.getOperatorName(),
+            operator.getLocation(),
+            operator.getOperatorNum(),
+            operatorId,
+            typeFound);
+
+    activity.createActivityId();
+
+    MessageCli.ACTIVITY_CREATED.printMessage(
+        activityName, activity.getActivityId(), typeFound.toString(), activity.getOperatorName());
   }
 
   public void searchActivities(String keyword) {
