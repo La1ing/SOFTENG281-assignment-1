@@ -100,7 +100,7 @@ public class OperatorManagementSystem {
     } else if (size == 1) {
       // Case for 1 activity found
       Activity activity = activityList.getEntry(viewedActivities.get(0));
-      MessageCli.ACTIVITIES_FOUND.printMessage("is", "1", "", ":");
+      MessageCli.ACTIVITIES_FOUND.printMessage("is", "1", "y", ":");
       activity.printDetails();
     } else {
       // Case for multiple activites found
