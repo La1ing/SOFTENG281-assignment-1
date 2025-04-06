@@ -3,6 +3,15 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public abstract class ListTypes<Type> {
+  /*
+  ListTypes covers:
+  - Adding to list
+  - Checking for no entries
+  - Getting an entry
+  - Getting size
+  - Searching by id
+  */
+
   protected ArrayList<Type> list;
 
   public ListTypes() {

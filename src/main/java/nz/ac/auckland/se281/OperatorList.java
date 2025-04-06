@@ -5,25 +5,10 @@ import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorList extends ListTypes<Operator> {
 
-  // protected ArrayList<Operator> operatorList;
-
   // Initialising operatorList
   public OperatorList() {
     super();
   }
-
-  /*public void addToList(Operator op) {
-    this.operatorList.add(op);
-  }*/
-
-  // check if operatorList is empty
-  /*public boolean containsNoOperators() {
-    return this.operatorList.isEmpty();
-  }*/
-
-  /*public Operator getOperator(int i) {
-    return this.operatorList.get(i);
-  }*/
 
   // Checks for duplicate entry by matching name and location
   public boolean isDuplicate(Operator op) {
@@ -35,10 +20,6 @@ public class OperatorList extends ListTypes<Operator> {
     }
     return false;
   }
-
-  /*public int getSize() {
-    return this.operatorList.size();
-  }*/
 
   public int opsInSameLoc(Location loc) {
     int sameLoc = 0;

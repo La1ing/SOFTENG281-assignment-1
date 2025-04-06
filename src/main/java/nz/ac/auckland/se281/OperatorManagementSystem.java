@@ -7,10 +7,12 @@ import nz.ac.auckland.se281.Types.Location;
 public class OperatorManagementSystem {
 
   private OperatorList operatorList;
+  private ActivityList activityList;
 
   // Do not change the parameters of the constructor
   public OperatorManagementSystem() {
     this.operatorList = new OperatorList();
+    this.activityList = new ActivityList();
   }
 
   public void searchOperators(String keyword) {
@@ -84,7 +86,15 @@ public class OperatorManagementSystem {
   }
 
   public void viewActivities(String operatorId) {
-    MessageCli.OPERATOR_NOT_FOUND.printMessage(operatorId);
+    if (operatorList.searchByOperatorId(operatorId) == null) {
+      MessageCli.OPERATOR_NOT_FOUND.printMessage(operatorId);
+      return;
+    }
+    ArrayList<Integer> viewedActivities = activityList.getViewedActivities(operatorId);
+    if (viewedActivities.size() == 0) {
+      MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
+      return;
+    }
   }
 
   public void createActivity(String activityName, String activityType, String operatorId) {
@@ -117,6 +127,7 @@ public class OperatorManagementSystem {
     activity.createActivityId();
 
     // NEED TO ADD ADD TO ACTIVITYLIST
+    this.activityList.addToList(activity);
 
     MessageCli.ACTIVITY_CREATED.printMessage(
         activityName, activity.getActivityId(), typeFound.toString(), activity.getOperatorName());
