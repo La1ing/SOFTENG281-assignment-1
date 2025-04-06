@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.Types.Location;
 
 public class OperatorList {
 
-  private ArrayList<Operator> operatorList;
+  protected ArrayList<Operator> operatorList;
 
   // Initialising operatorList
   public OperatorList() {

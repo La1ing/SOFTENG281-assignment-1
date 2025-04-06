@@ -5,10 +5,10 @@ import nz.ac.auckland.se281.Types.Location;
 
 public class Operator {
 
-  private String operatorName;
-  private Location location;
-  private Integer operatorNum;
-  private String operatorId;
+  protected String operatorName;
+  protected Location location;
+  protected Integer operatorNum;
+  protected String operatorId;
 
   public Operator(String on, Location loc, Integer num) {
     this.operatorName = on;
