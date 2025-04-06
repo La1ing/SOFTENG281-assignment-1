@@ -87,7 +87,10 @@ public class OperatorManagementSystem {
 
   public void createActivity(String activityName, String activityType, String operatorId) {
     activityName = activityName.trim();
-
+    if (activityName.length() < 3) {
+      MessageCli.ACTIVITY_NOT_CREATED_INVALID_ACTIVITY_NAME.printMessage(activityName);
+      return;
+    }
     // Search for matching operatorId in OperatorList
     if (!operatorList.containsOperatorId(operatorId)) {
       MessageCli.ACTIVITY_NOT_CREATED_INVALID_OPERATOR_ID.printMessage(operatorId);
