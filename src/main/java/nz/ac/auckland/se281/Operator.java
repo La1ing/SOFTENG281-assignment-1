@@ -42,6 +42,10 @@ public class Operator {
         this.operatorName, this.operatorId, this.location.getFullName());
   }
 
+  public void setOperatorId(String operatorId) {
+    this.operatorId = operatorId;
+  }
+
   public Location getLocation() {
     return this.location;
   }

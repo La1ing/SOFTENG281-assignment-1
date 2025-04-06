@@ -19,4 +19,14 @@ public class ActivityList extends ListTypes<Activity> {
     }
     return indexes;
   }
+
+  public int acsInSameOp(String operatorId) {
+    int sameOp = 0;
+    for (Activity activity : this.list) {
+      if (activity.getOperatorId().equals(operatorId)) {
+        sameOp++;
+      }
+    }
+    return sameOp;
+  }
 }

@@ -86,14 +86,30 @@ public class OperatorManagementSystem {
   }
 
   public void viewActivities(String operatorId) {
+    // Checking if operatorId is valid
     if (operatorList.searchByOperatorId(operatorId) == null) {
       MessageCli.OPERATOR_NOT_FOUND.printMessage(operatorId);
       return;
     }
     ArrayList<Integer> viewedActivities = activityList.getViewedActivities(operatorId);
-    if (viewedActivities.size() == 0) {
+    int size = viewedActivities.size(); // Finding size of viewed activities
+
+    if (size == 0) {
+      // Case for no activies found
       MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
-      return;
+    } else if (size == 1) {
+      // Case for 1 activity found
+      Activity activity = activityList.getEntry(viewedActivities.get(0));
+      MessageCli.ACTIVITIES_FOUND.printMessage("is", "1", "", ":");
+      activity.printDetails();
+    } else {
+      // Case for multiple activites found
+      MessageCli.ACTIVITIES_FOUND.printMessage(
+          "are", Integer.toString(viewedActivities.size()), "ies", ":");
+      for (int i : viewedActivities) {
+        Activity activity = this.activityList.getEntry(i);
+        activity.printDetails();
+      }
     }
   }
 
@@ -114,15 +130,18 @@ public class OperatorManagementSystem {
 
     // Search for matching activity type
     ActivityType typeFound = ActivityType.fromString(activityType);
+    int activityNum = 1 + activityList.acsInSameOp(operatorId);
 
     // create activity
     Activity activity =
         new Activity(
+            activityName,
             operator.getOperatorName(),
             operator.getLocation(),
             operator.getOperatorNum(),
             operatorId,
-            typeFound);
+            typeFound,
+            activityNum);
 
     activity.createActivityId();
 
