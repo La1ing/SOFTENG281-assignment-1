@@ -52,6 +52,10 @@ public class Operator {
     return this.operatorName;
   }
 
+  public String getOperatorId() {
+    return this.operatorId;
+  }
+
   public ArrayList<String> getOperatorDetails() {
     ArrayList<String> details = new ArrayList<>();
     details.add(this.location.getNameEnglish());

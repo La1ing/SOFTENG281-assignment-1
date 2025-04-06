@@ -77,4 +77,13 @@ public class OperatorList {
 
     return indexes;
   }
+
+  public boolean containsOperatorId(String operatorId) {
+    for (Operator operator : operatorList) {
+      if (operator.getOperatorId().equals(operatorId)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

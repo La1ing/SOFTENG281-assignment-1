@@ -86,7 +86,13 @@ public class OperatorManagementSystem {
   }
 
   public void createActivity(String activityName, String activityType, String operatorId) {
-    // TODO implement
+    activityName = activityName.trim();
+
+    // Search for matching operatorId in OperatorList
+    if (!operatorList.containsOperatorId(operatorId)) {
+      MessageCli.ACTIVITY_NOT_CREATED_INVALID_OPERATOR_ID.printMessage(operatorId);
+      return;
+    }
   }
 
   public void searchActivities(String keyword) {
