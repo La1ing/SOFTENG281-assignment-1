@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.reviews.PublicReview;
 import nz.ac.auckland.se281.reviews.Review;
 
 public class ReviewList extends ListTypes<Review> {
@@ -26,9 +27,44 @@ public class ReviewList extends ListTypes<Review> {
     return indexes;
   }
 
-  public ArrayList<Integer> getDisplayedReviews(String activityId) {
+  public Integer getReviewIndex(String reviewId) {
+    for (int i = 0; i < this.list.size(); i++) {
+      Review review = this.list.get(i);
+      if (review.getReviewId().equals(reviewId)) {
+        if (review.getReviewType() == Types.ReviewType.PRIVATE
+            || review.getReviewType() == Types.ReviewType.EXPERT) {
+          return 0;
+        } else {
+          return 1;
+        }
+      }
+    }
+    return -1;
+  }
+
+  public void settingEndorsement(String reviewId) {
+    for (Review review : this.list) {
+      if (review.getReviewId().equals(reviewId)) {
+        if (review instanceof PublicReview) {
+          // Case for if review is public
+          ((PublicReview) review).addEndorsement();
+          MessageCli.REVIEW_ENDORSED.printMessage(reviewId);
+          return;
+        } else {
+          // If review found but not public
+          MessageCli.REVIEW_NOT_ENDORSED.printMessage(reviewId);
+          return;
+        }
+      }
+    }
+    // No review found for reviewid
+    MessageCli.REVIEW_NOT_FOUND.printMessage(reviewId);
+  }
+
+  public ArrayList<Integer> getMatchingActId(String activityId) {
     ArrayList<Integer> indexes = new ArrayList<>();
 
+    // Iterating through list to find matching activityId
     for (int i = 0; i < list.size(); i++) {
       Review review = list.get(i);
       if (review.getActivityId().equals(activityId)) {

@@ -231,12 +231,12 @@ public class OperatorManagementSystem {
     }
 
     // Finding amount of indexes in activityList
-    ArrayList<Integer> displayedReviews = reviewList.getDisplayedReviews(activityId);
+    ArrayList<Integer> displayedReviews = reviewList.getMatchingActId(activityId);
     reviewList.printReviews(displayedReviews, activity.getActivityName());
   }
 
   public void endorseReview(String reviewId) {
-    // TODO implement
+    reviewList.settingEndorsement(reviewId);
   }
 
   public void resolveReview(String reviewId, String response) {
