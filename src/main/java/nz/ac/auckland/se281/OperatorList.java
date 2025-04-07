@@ -67,4 +67,25 @@ public class OperatorList extends ListTypes<Operator> {
     }
     return null;
   }
+
+  @Override
+  public void printEntries(ArrayList<Integer> indexes) {
+    int size = indexes.size();
+    if (size == 1) {
+      // case for 1 operator
+      Operator op = this.getEntry(indexes.get(0));
+      MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
+      op.printDetails();
+    } else if (size == 0) {
+      // case for 0 operators found
+      MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
+    } else {
+      // case for multiple operators
+      MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
+      for (int i : indexes) {
+        Operator op = this.getEntry(i);
+        op.printDetails();
+      }
+    }
+  }
 }

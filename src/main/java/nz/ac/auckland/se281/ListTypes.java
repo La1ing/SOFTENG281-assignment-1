@@ -14,6 +14,8 @@ public abstract class ListTypes<Type> {
 
   protected ArrayList<Type> list;
 
+  protected abstract void printEntries(ArrayList<Integer> indexes);
+
   public ListTypes() {
     this.list = new ArrayList<>();
   }

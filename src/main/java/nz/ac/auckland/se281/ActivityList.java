@@ -30,7 +30,8 @@ public class ActivityList extends ListTypes<Activity> {
     return sameOp;
   }
 
-  public void printActivities(ArrayList<Integer> indexes) {
+  @Override
+  public void printEntries(ArrayList<Integer> indexes) {
     int size = indexes.size();
     if (size == 0) {
       // Case for no activies found
