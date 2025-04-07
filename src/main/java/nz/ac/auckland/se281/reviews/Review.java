@@ -1,5 +1,7 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.Types.ReviewType;
+
 public abstract class Review {
   protected String activityId;
   protected String name;
@@ -7,6 +9,7 @@ public abstract class Review {
   protected String comment;
   protected int reviewNum;
   protected String reviewId;
+  protected ReviewType reviewType;
 
   public Review(String activityId, String name, Integer rating, String comment) {
     this.activityId = activityId;
@@ -32,5 +35,9 @@ public abstract class Review {
 
   public String getReviewId() {
     return this.reviewId;
+  }
+
+  public ReviewType getReviewType() {
+    return this.reviewType;
   }
 }

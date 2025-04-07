@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.ActivityType;
 import nz.ac.auckland.se281.Types.Location;
+import nz.ac.auckland.se281.reviews.ExpertReview;
 import nz.ac.auckland.se281.reviews.PrivateReview;
 import nz.ac.auckland.se281.reviews.PublicReview;
 
@@ -168,6 +169,7 @@ public class OperatorManagementSystem {
       MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
       return;
     }
+
     PrivateReview review =
         new PrivateReview(
             activityId,
@@ -190,7 +192,28 @@ public class OperatorManagementSystem {
   }
 
   public void addExpertReview(String activityId, String[] options) {
-    // TODO implement
+    // Check for valid activityId
+    Activity activity = activityList.getMatchingActivity(activityId);
+
+    if (activity == null) {
+      MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
+      return;
+    }
+
+    ExpertReview review =
+        new ExpertReview(
+            activityId, options[0], Integer.valueOf(options[1]), options[2], options[3]);
+
+    int reviewNum = 1 + reviewList.revsInSameAct(activityId);
+    // Setting the review number & id for reivew
+    review.setReviewId(reviewNum);
+
+    // Add review to reviewList
+    this.reviewList.addToList(review);
+
+    // Print success message
+    MessageCli.REVIEW_ADDED.printMessage(
+        review.getReviewType().toString(), review.getReviewId(), activity.getActivityName());
   }
 
   public void displayReviews(String activityId) {

@@ -1,10 +1,8 @@
 package nz.ac.auckland.se281.reviews;
 
 import nz.ac.auckland.se281.Types;
-import nz.ac.auckland.se281.Types.ReviewType;
 
 public class PublicReview extends Review {
-  private ReviewType reviewType;
   private boolean anon;
   private boolean endorsed;
 
@@ -19,10 +17,6 @@ public class PublicReview extends Review {
         this.anon = false;
         break;
     }
-  }
-
-  public ReviewType getReviewType() {
-    return reviewType;
   }
 
   public void addEndorsement() {
