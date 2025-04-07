@@ -240,7 +240,7 @@ public class OperatorManagementSystem {
   }
 
   public void resolveReview(String reviewId, String response) {
-    // TODO implement
+    reviewList.resolvingReview(reviewId, response);
   }
 
   public void uploadReviewImage(String reviewId, String imageName) {

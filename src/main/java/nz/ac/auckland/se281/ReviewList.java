@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.reviews.PrivateReview;
 import nz.ac.auckland.se281.reviews.PublicReview;
 import nz.ac.auckland.se281.reviews.Review;
 
@@ -53,6 +54,24 @@ public class ReviewList extends ListTypes<Review> {
         } else {
           // If review found but not public
           MessageCli.REVIEW_NOT_ENDORSED.printMessage(reviewId);
+          return;
+        }
+      }
+    }
+    // No review found for reviewid
+    MessageCli.REVIEW_NOT_FOUND.printMessage(reviewId);
+  }
+
+  public void resolvingReview(String reviewId, String response) {
+    for (Review review : this.list) {
+      if (review.getReviewId().equals(reviewId)) {
+        if (review instanceof PrivateReview) {
+          // Case for if review is private
+          // NEED IMPLEMENTATION
+          return;
+        } else {
+          // If review found but not private
+          MessageCli.REVIEW_NOT_RESOLVED.printMessage(reviewId);
           return;
         }
       }
