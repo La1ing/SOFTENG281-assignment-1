@@ -31,7 +31,7 @@ public class OperatorList extends ListTypes<Operator> {
     return sameLoc;
   }
 
-  public ArrayList<Integer> getMatchingOperators(String keyword) {
+  public ArrayList<Integer> getMatchingEntries(String keyword) {
     ArrayList<Integer> indexes = new ArrayList<>();
 
     // Case for if "*", then returns all indexes

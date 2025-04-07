@@ -30,7 +30,7 @@ public class ActivityList extends ListTypes<Activity> {
     return sameOp;
   }
 
-  public ArrayList<Integer> getMatchingActivities(String keyword) {
+  public ArrayList<Integer> getMatchingEntries(String keyword) {
     ArrayList<Integer> indexes = new ArrayList<>();
 
     // Case for if "*", then returns all indexes

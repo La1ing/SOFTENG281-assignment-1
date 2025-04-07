@@ -24,7 +24,7 @@ public class OperatorManagementSystem {
     }
 
     // Finding amount of indexes in operatorList (improved to account for "*" case)
-    ArrayList<Integer> matchingOperators = operatorList.getMatchingOperators(keyword);
+    ArrayList<Integer> matchingOperators = operatorList.getMatchingEntries(keyword);
     operatorList.printEntries(matchingOperators);
   }
 
@@ -125,6 +125,10 @@ public class OperatorManagementSystem {
       MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
       return;
     }
+
+    // Finding amount of indexes in activityList
+    ArrayList<Integer> matchingActivities = activityList.getMatchingEntries(keyword);
+    activityList.printEntries(matchingActivities);
   }
 
   public void addPublicReview(String activityId, String[] options) {
