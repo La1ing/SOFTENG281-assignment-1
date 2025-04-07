@@ -58,6 +58,15 @@ public class ActivityList extends ListTypes<Activity> {
     return indexes;
   }
 
+  public Activity getMatchingActivity(String activityId) {
+    for (Activity activity : list) {
+      if (activity.getActivityId().equals(activityId)) {
+        return activity;
+      }
+    }
+    return null;
+  }
+
   @Override
   public void printEntries(ArrayList<Integer> indexes) {
     int size = indexes.size();

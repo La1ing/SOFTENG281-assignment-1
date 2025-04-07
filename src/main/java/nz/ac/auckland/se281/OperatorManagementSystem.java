@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.ActivityType;
 import nz.ac.auckland.se281.Types.Location;
+import nz.ac.auckland.se281.reviews.PublicReview;
 
 public class OperatorManagementSystem {
 
@@ -132,7 +133,18 @@ public class OperatorManagementSystem {
   }
 
   public void addPublicReview(String activityId, String[] options) {
-    // TODO implement
+    Activity activity = activityList.getMatchingActivity(activityId);
+
+    if (activity == null) {
+      MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
+      return;
+    }
+
+    PublicReview review =
+        new PublicReview(
+            Types.ReviewType.PUBLIC, activityId, options[0], options[1], options[2], options[3]);
+
+    MessageCli.REVIEW_ADDED.printMessage(activityId, activity.getActivityName());
   }
 
   public void addPrivateReview(String activityId, String[] options) {
