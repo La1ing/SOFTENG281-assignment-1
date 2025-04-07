@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.ActivityType;
 import nz.ac.auckland.se281.Types.Location;
 
@@ -39,6 +40,16 @@ public class Activity extends Operator {
 
   public ActivityType getActivityType() {
     return type;
+  }
+
+  public ArrayList<String> getActivityDetails() {
+    ArrayList<String> details = new ArrayList<>();
+    details.add(this.location.getNameEnglish());
+    details.add(this.location.getNameTeReo());
+    details.add(this.location.getLocationAbbreviation());
+    details.add(this.activityName);
+    details.add(this.getActivityType().toString());
+    return details;
   }
 
   @Override

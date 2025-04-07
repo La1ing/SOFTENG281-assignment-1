@@ -26,23 +26,6 @@ public class OperatorManagementSystem {
     // Finding amount of indexes in operatorList (improved to account for "*" case)
     ArrayList<Integer> matchingOperators = operatorList.getMatchingOperators(keyword);
     operatorList.printEntries(matchingOperators);
-
-    // if (size == 1) {
-    //   // case for 1 operator
-    //   Operator op = this.operatorList.getEntry(matchingOperators.get(0));
-    //   MessageCli.OPERATORS_FOUND.printMessage("is", "1", "", ": ");
-    //   op.printDetails();
-    // } else if (size == 0) {
-    //   // case for 0 operators found
-    //   MessageCli.OPERATORS_FOUND.printMessage("are", "no", "s", ".");
-    // } else {
-    //   // case for multiple operators
-    //   MessageCli.OPERATORS_FOUND.printMessage("are", Integer.toString(size), "s", ": ");
-    //   for (int i : matchingOperators) {
-    //     Operator op = this.operatorList.getEntry(i);
-    //     op.printDetails();
-    //   }
-    // }
   }
 
   public void createOperator(String operatorName, String location) {
@@ -135,7 +118,13 @@ public class OperatorManagementSystem {
   }
 
   public void searchActivities(String keyword) {
-    // TODO implement
+    // VIEWS BY KEYWORD IN ACTIVITYNAME / TYPE / OPERQATOR LOCATION
+
+    // Case when there are no operators
+    if (this.activityList.containsNoEntries()) {
+      MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
+      return;
+    }
   }
 
   public void addPublicReview(String activityId, String[] options) {

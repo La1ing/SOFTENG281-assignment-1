@@ -30,6 +30,34 @@ public class ActivityList extends ListTypes<Activity> {
     return sameOp;
   }
 
+  public ArrayList<Integer> getMatchingActivities(String keyword) {
+    ArrayList<Integer> indexes = new ArrayList<>();
+
+    // Case for if "*", then returns all indexes
+    if (keyword.trim().equals("*")) {
+      for (int i = 0; i < list.size(); i++) {
+        indexes.add(i);
+      }
+      return indexes;
+    }
+
+    for (int i = 0; i < list.size(); i++) {
+      Activity activity = list.get(i);
+      ArrayList<String> details = activity.getActivityDetails();
+
+      for (String detail : details) {
+        if (detail
+            .toLowerCase()
+            .contains(keyword.trim().toLowerCase())) { // Matching details (not case sensitive)
+          indexes.add(i);
+          break; // Moving to next iteration of detail loop
+        }
+      }
+    }
+
+    return indexes;
+  }
+
   @Override
   public void printEntries(ArrayList<Integer> indexes) {
     int size = indexes.size();
