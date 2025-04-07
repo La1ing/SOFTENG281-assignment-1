@@ -68,7 +68,6 @@ public class OperatorList extends ListTypes<Operator> {
     return null;
   }
 
-  @Override
   public void printEntries(ArrayList<Integer> indexes) {
     int size = indexes.size();
     if (size == 1) {

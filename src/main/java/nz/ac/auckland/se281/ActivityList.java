@@ -67,7 +67,6 @@ public class ActivityList extends ListTypes<Activity> {
     return null;
   }
 
-  @Override
   public void printEntries(ArrayList<Integer> indexes) {
     int size = indexes.size();
     if (size == 0) {

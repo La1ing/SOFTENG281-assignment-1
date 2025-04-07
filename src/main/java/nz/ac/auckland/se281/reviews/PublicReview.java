@@ -30,4 +30,9 @@ public class PublicReview extends Review {
   public boolean getAnon() {
     return this.anon;
   }
+
+  @Override
+  public void printDetails() {
+    super.printDetails();
+  }
 }

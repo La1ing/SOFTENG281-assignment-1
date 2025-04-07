@@ -14,8 +14,6 @@ public abstract class ListTypes<Type> {
 
   protected ArrayList<Type> list;
 
-  protected abstract void printEntries(ArrayList<Integer> indexes);
-
   protected abstract ArrayList<Integer> getMatchingEntries(String keyword);
 
   public ListTypes() {

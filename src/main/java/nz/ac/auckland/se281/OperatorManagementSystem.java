@@ -226,10 +226,13 @@ public class OperatorManagementSystem {
 
     // Case when there are no reviews
     if (this.reviewList.containsNoEntries()) {
-
       MessageCli.REVIEWS_FOUND.printMessage("are", "no", "s", activity.getActivityName());
       return;
     }
+
+    // Finding amount of indexes in activityList
+    ArrayList<Integer> displayedReviews = reviewList.getDisplayedReviews(activityId);
+    reviewList.printReviews(displayedReviews, activity.getActivityName());
   }
 
   public void endorseReview(String reviewId) {

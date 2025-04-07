@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Types.ReviewType;
 
 public abstract class Review {
@@ -39,5 +40,11 @@ public abstract class Review {
 
   public ReviewType getReviewType() {
     return this.reviewType;
+  }
+
+  public void printDetails() {
+    MessageCli.REVIEW_ENTRY_HEADER.printMessage(
+        Integer.toString(rating), "5", this.reviewType.toString(), this.reviewId, this.name);
+    MessageCli.REVIEW_ENTRY_REVIEW_TEXT.printMessage(this.comment);
   }
 }
