@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Types;
 
 public class PublicReview extends Review {
@@ -33,6 +34,18 @@ public class PublicReview extends Review {
 
   @Override
   public void printDetails() {
-    super.printDetails();
+    if (this.anon == true) {
+      MessageCli.REVIEW_ENTRY_HEADER.printMessage(
+          Integer.toString(rating), "5", this.reviewType.toString(), this.reviewId, "Anonymous");
+    } else {
+      MessageCli.REVIEW_ENTRY_HEADER.printMessage(
+          Integer.toString(rating), "5", this.reviewType.toString(), this.reviewId, this.name);
+    }
+
+    MessageCli.REVIEW_ENTRY_REVIEW_TEXT.printMessage(this.comment);
+
+    if (this.endorsed) {
+      MessageCli.REVIEW_ENTRY_ENDORSED.printMessage();
+    }
   }
 }

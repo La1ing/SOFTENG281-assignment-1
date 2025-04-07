@@ -1,11 +1,12 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Types;
 
 public class PrivateReview extends Review {
   private String email;
   private boolean followUp;
-  private boolean resolved;
+  private String resolved;
 
   public PrivateReview(
       String activityId,
@@ -23,6 +24,14 @@ public class PrivateReview extends Review {
       case "n":
         this.followUp = false;
         break;
+    }
+  }
+
+  @Override
+  public void printDetails() {
+    super.printDetails();
+    if (resolved == null) {
+      MessageCli.REVIEW_ENTRY_RESOLVED.printMessage("-");
     }
   }
 }
