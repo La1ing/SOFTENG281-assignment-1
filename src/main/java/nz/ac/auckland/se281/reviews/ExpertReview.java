@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Types;
 
 public class ExpertReview extends Review {
@@ -17,6 +18,14 @@ public class ExpertReview extends Review {
       case "n":
         this.recommend = false;
         break;
+    }
+  }
+
+  @Override
+  public void printDetails() {
+    super.printDetails();
+    if (this.recommend) {
+      MessageCli.REVIEW_ENTRY_RECOMMENDED.printMessage();
     }
   }
 }

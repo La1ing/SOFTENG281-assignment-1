@@ -30,7 +30,7 @@ public class PrivateReview extends Review {
   @Override
   public void printDetails() {
     super.printDetails();
-    if (resolved == null) {
+    if (this.resolved == null) {
       MessageCli.REVIEW_ENTRY_RESOLVED.printMessage("-");
     }
   }
