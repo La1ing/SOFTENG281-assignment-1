@@ -29,4 +29,24 @@ public class ActivityList extends ListTypes<Activity> {
     }
     return sameOp;
   }
+
+  public void printActivities(ArrayList<Integer> indexes) {
+    int size = indexes.size();
+    if (size == 0) {
+      // Case for no activies found
+      MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
+    } else if (size == 1) {
+      // Case for 1 activity found
+      Activity activity = this.getEntry(indexes.get(0));
+      MessageCli.ACTIVITIES_FOUND.printMessage("is", "1", "y", ":");
+      activity.printDetails();
+    } else {
+      // Case for multiple activites found
+      MessageCli.ACTIVITIES_FOUND.printMessage("are", Integer.toString(indexes.size()), "ies", ":");
+      for (int i : indexes) {
+        Activity activity = this.getEntry(i);
+        activity.printDetails();
+      }
+    }
+  }
 }

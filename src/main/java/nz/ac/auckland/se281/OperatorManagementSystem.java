@@ -93,24 +93,25 @@ public class OperatorManagementSystem {
     }
     ArrayList<Integer> viewedActivities = activityList.getViewedActivities(operatorId);
     int size = viewedActivities.size(); // Finding size of viewed activities
+    activityList.printActivities(viewedActivities);
 
-    if (size == 0) {
-      // Case for no activies found
-      MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
-    } else if (size == 1) {
-      // Case for 1 activity found
-      Activity activity = activityList.getEntry(viewedActivities.get(0));
-      MessageCli.ACTIVITIES_FOUND.printMessage("is", "1", "y", ":");
-      activity.printDetails();
-    } else {
-      // Case for multiple activites found
-      MessageCli.ACTIVITIES_FOUND.printMessage(
-          "are", Integer.toString(viewedActivities.size()), "ies", ":");
-      for (int i : viewedActivities) {
-        Activity activity = this.activityList.getEntry(i);
-        activity.printDetails();
-      }
-    }
+    // if (size == 0) {
+    //   // Case for no activies found
+    //   MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
+    // } else if (size == 1) {
+    //   // Case for 1 activity found
+    //   Activity activity = activityList.getEntry(viewedActivities.get(0));
+    //   MessageCli.ACTIVITIES_FOUND.printMessage("is", "1", "y", ":");
+    //   activity.printDetails();
+    // } else {
+    //   // Case for multiple activites found
+    //   MessageCli.ACTIVITIES_FOUND.printMessage(
+    //       "are", Integer.toString(viewedActivities.size()), "ies", ":");
+    //   for (int i : viewedActivities) {
+    //     Activity activity = this.activityList.getEntry(i);
+    //     activity.printDetails();
+    //   }
+    // }
   }
 
   public void createActivity(String activityName, String activityType, String operatorId) {
