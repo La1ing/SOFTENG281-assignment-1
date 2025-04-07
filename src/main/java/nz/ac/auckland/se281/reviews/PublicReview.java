@@ -12,7 +12,7 @@ public class PublicReview extends Review {
       String activityId,
       String name,
       String anon,
-      String rating,
+      Integer rating,
       String comment) {
     super(activityId, name, rating, comment);
     this.reviewType = reviewType;

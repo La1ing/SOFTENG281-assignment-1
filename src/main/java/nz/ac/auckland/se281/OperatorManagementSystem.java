@@ -9,11 +9,13 @@ public class OperatorManagementSystem {
 
   private OperatorList operatorList;
   private ActivityList activityList;
+  private ReviewList reviewList;
 
   // Do not change the parameters of the constructor
   public OperatorManagementSystem() {
     this.operatorList = new OperatorList();
     this.activityList = new ActivityList();
+    this.reviewList = new ReviewList();
   }
 
   public void searchOperators(String keyword) {
@@ -133,6 +135,7 @@ public class OperatorManagementSystem {
   }
 
   public void addPublicReview(String activityId, String[] options) {
+    // Check for valid activityId
     Activity activity = activityList.getMatchingActivity(activityId);
 
     if (activity == null) {
@@ -140,15 +143,34 @@ public class OperatorManagementSystem {
       return;
     }
 
+    // NEED TO ADD REVIEW TO REVIEWLIST
     PublicReview review =
         new PublicReview(
-            Types.ReviewType.PUBLIC, activityId, options[0], options[1], options[2], options[3]);
+            Types.ReviewType.PUBLIC,
+            activityId,
+            options[0],
+            options[1],
+            Integer.valueOf(options[2]),
+            options[3]);
 
-    MessageCli.REVIEW_ADDED.printMessage(activityId, activity.getActivityName());
+    int reviewNum = 1 + reviewList.revsInSameAct(activityId);
+    // Setting the review number & id for reivew
+    review.setReviewId(reviewNum);
+
+    this.reviewList.addToList(review);
+
+    MessageCli.REVIEW_ADDED.printMessage(
+        review.getReviewType().toString(), review.getReviewId(), activity.getActivityName());
   }
 
   public void addPrivateReview(String activityId, String[] options) {
-    // TODO implement
+    // Check for valid activityId
+    Activity activity = activityList.getMatchingActivity(activityId);
+
+    if (activity == null) {
+      MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
+      return;
+    }
   }
 
   public void addExpertReview(String activityId, String[] options) {
