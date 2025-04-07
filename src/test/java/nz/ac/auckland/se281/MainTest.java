@@ -1585,6 +1585,21 @@ public class MainTest {
       assertDoesNotContain("There is", true);
       assertDoesNotContain("matching operators found:", true);
     }
+
+    @Test
+    public void T2_13_search_no_activities_found_operator_name() throws Exception {
+      runCommands(
+          unpack(
+              CREATE_14_OPERATORS,
+              CREATE_27_ACTIVITIES,
+              SEARCH_ACTIVITIES,
+              "'West Auckland Camel Treks'",
+              EXIT));
+
+      assertContains("There are no matching activities found.");
+      assertDoesNotContain("There is", true);
+      assertDoesNotContain("There are 27", true);
+    }
   }
 
   private static final Object[] CREATE_14_OPERATORS =
