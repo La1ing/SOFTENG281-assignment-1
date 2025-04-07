@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.Types;
 import nz.ac.auckland.se281.Types.ReviewType;
 
 public class PublicReview extends Review {
@@ -7,15 +8,9 @@ public class PublicReview extends Review {
   private boolean anon;
   private boolean endorsed;
 
-  public PublicReview(
-      ReviewType reviewType,
-      String activityId,
-      String name,
-      String anon,
-      Integer rating,
-      String comment) {
+  public PublicReview(String activityId, String name, String anon, Integer rating, String comment) {
     super(activityId, name, rating, comment);
-    this.reviewType = reviewType;
+    this.reviewType = Types.ReviewType.PUBLIC;
     switch (anon) {
       case "y":
         this.anon = true;

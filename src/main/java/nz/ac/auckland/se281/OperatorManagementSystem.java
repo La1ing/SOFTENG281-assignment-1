@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 import nz.ac.auckland.se281.Types.ActivityType;
 import nz.ac.auckland.se281.Types.Location;
+import nz.ac.auckland.se281.reviews.PrivateReview;
 import nz.ac.auckland.se281.reviews.PublicReview;
 
 public class OperatorManagementSystem {
@@ -143,22 +144,18 @@ public class OperatorManagementSystem {
       return;
     }
 
-    // NEED TO ADD REVIEW TO REVIEWLIST
     PublicReview review =
         new PublicReview(
-            Types.ReviewType.PUBLIC,
-            activityId,
-            options[0],
-            options[1],
-            Integer.valueOf(options[2]),
-            options[3]);
+            activityId, options[0], options[1], Integer.valueOf(options[2]), options[3]);
 
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
     // Setting the review number & id for reivew
     review.setReviewId(reviewNum);
 
+    // Add review to reviewList
     this.reviewList.addToList(review);
 
+    // Print success message
     MessageCli.REVIEW_ADDED.printMessage(
         review.getReviewType().toString(), review.getReviewId(), activity.getActivityName());
   }
@@ -171,6 +168,25 @@ public class OperatorManagementSystem {
       MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
       return;
     }
+    PrivateReview review =
+        new PrivateReview(
+            activityId,
+            options[0],
+            options[1],
+            Integer.valueOf(options[2]),
+            options[3],
+            options[4]);
+
+    int reviewNum = 1 + reviewList.revsInSameAct(activityId);
+    // Setting the review number & id for reivew
+    review.setReviewId(reviewNum);
+
+    // Add review to reviewList
+    this.reviewList.addToList(review);
+
+    // Print success message
+    MessageCli.REVIEW_ADDED.printMessage(
+        review.getReviewType().toString(), review.getReviewId(), activity.getActivityName());
   }
 
   public void addExpertReview(String activityId, String[] options) {
