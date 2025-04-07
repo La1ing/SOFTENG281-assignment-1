@@ -115,7 +115,6 @@ public class OperatorManagementSystem {
 
     activity.createActivityId();
 
-    // NEED TO ADD ADD TO ACTIVITYLIST
     this.activityList.addToList(activity);
 
     MessageCli.ACTIVITY_CREATED.printMessage(
@@ -125,7 +124,7 @@ public class OperatorManagementSystem {
   public void searchActivities(String keyword) {
     // VIEWS BY KEYWORD IN ACTIVITYNAME / TYPE / OPERQATOR LOCATION
 
-    // Case when there are no operators
+    // Case when there are no activities
     if (this.activityList.containsNoEntries()) {
       MessageCli.ACTIVITIES_FOUND.printMessage("are", "no", "ies", ".");
       return;
@@ -217,7 +216,20 @@ public class OperatorManagementSystem {
   }
 
   public void displayReviews(String activityId) {
-    // TODO implement
+    // Check for valid activityId
+    Activity activity = activityList.getMatchingActivity(activityId);
+
+    if (activity == null) {
+      MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
+      return;
+    }
+
+    // Case when there are no reviews
+    if (this.reviewList.containsNoEntries()) {
+
+      MessageCli.REVIEWS_FOUND.printMessage("are", "no", "s", activity.getActivityName());
+      return;
+    }
   }
 
   public void endorseReview(String reviewId) {
