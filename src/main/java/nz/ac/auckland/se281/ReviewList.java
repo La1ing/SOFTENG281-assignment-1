@@ -123,17 +123,44 @@ public class ReviewList extends ListTypes<Review> {
   }
 
   public void rankActivities(Location location) {
-    ArrayList<Review> matchingReview = new ArrayList<>();
+    ArrayList<Review> matchingReviews = new ArrayList<>();
+    ArrayList<Activity> matchingActivities = new ArrayList<>();
+
     for (Review review : this.list) {
-      if (review.getlocation().equals(location)) {
-        // DUMMY CASE, NEEX FIXING
-        matchingReview.add(review);
+      // Checking if review is not private and if location mathces
+      if (!review.getReviewType().equals(Types.ReviewType.PRIVATE)
+          && review.getlocation().equals(location)) {
+        matchingReviews.add(review);
+        // Checking if activity has been in by matchingActivities
+        if (!matchingActivities.contains(review.getActivity())) {
+          matchingActivities.add(review.getActivity());
+        }
       }
     }
     // Checking if matching reviews is empty
-    if (matchingReview.isEmpty()) {
+    if (matchingReviews.isEmpty()) {
       MessageCli.NO_REVIEWED_ACTIVITIES.printMessage(location.toString());
       return;
     }
+
+    // Adds rating to activity
+    for (Review review : matchingReviews) {
+      review.getActivity().addRating(review.getRating());
+    }
+
+    // Finding highest rated activity
+    Activity highestRated = null;
+    double highestRating = 0;
+    for (Activity activity : matchingActivities) {
+      if (activity.getAverageRating() > highestRating) {
+        highestRated = activity;
+        highestRating = activity.getAverageRating();
+      }
+    }
+
+    String ratingString = String.format("%.1f", highestRating);
+
+    MessageCli.TOP_ACTIVITY.printMessage(
+        location.toString(), highestRated.getActivityName(), ratingString);
   }
 }

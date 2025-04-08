@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281.reviews;
 
+import nz.ac.auckland.se281.Activity;
 import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Types.Location;
 import nz.ac.auckland.se281.Types.ReviewType;
@@ -14,6 +15,7 @@ public abstract class Review {
   protected ReviewType reviewType;
   protected String activityName;
   protected Location location;
+  protected Activity activity;
 
   public Review(String activityId, String name, Integer rating, String comment) {
     this.activityId = activityId;
@@ -28,11 +30,17 @@ public abstract class Review {
     this.comment = comment;
   }
 
-  public void setDetails(String activityName, Location location, Integer reviewNum) {
+  public void setDetails(
+      String activityName, Location location, Integer reviewNum, Activity activity) {
     this.activityName = activityName;
     this.location = location;
     this.reviewNum = reviewNum;
     this.reviewId = this.activityId + "-R" + Integer.toString(reviewNum);
+    this.activity = activity;
+  }
+
+  public Activity getActivity() {
+    return this.activity;
   }
 
   public String getActivityId() {
@@ -53,6 +61,10 @@ public abstract class Review {
 
   public ReviewType getReviewType() {
     return this.reviewType;
+  }
+
+  public Integer getRating() {
+    return this.rating;
   }
 
   public void printDetails() {

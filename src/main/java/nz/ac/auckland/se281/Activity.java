@@ -9,6 +9,7 @@ public class Activity extends Operator {
   private int activityNum;
   private String activityId;
   private ActivityType type;
+  private ArrayList<Integer> ratings;
 
   public Activity(
       String activityName,
@@ -20,6 +21,7 @@ public class Activity extends Operator {
       int activityNum) {
     super(on, loc, num);
     this.activityName = activityName;
+    this.ratings = new ArrayList<>();
     this.type = type;
     this.setOperatorId(operatorId);
     this.activityNum = activityNum;
@@ -50,6 +52,19 @@ public class Activity extends Operator {
     details.add(this.activityName);
     details.add(this.getActivityType().toString());
     return details;
+  }
+
+  public void addRating(int rating) {
+    this.ratings.add(rating);
+  }
+
+  public Double getAverageRating() {
+    int sum = 0;
+    for (int rating : ratings) {
+      sum += rating;
+    }
+    double average = (double) (sum / ratings.size());
+    return average;
   }
 
   @Override

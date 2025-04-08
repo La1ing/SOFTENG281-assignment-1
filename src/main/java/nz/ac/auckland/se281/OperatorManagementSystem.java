@@ -152,7 +152,7 @@ public class OperatorManagementSystem {
     Location location = activity.getLocation();
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
     // Setting the details for review (activity name, activity location, review number)
-    review.setDetails(activityName, location, reviewNum);
+    review.setDetails(activityName, location, reviewNum, activity);
 
     // Add review to reviewList
     this.reviewList.addToList(review);
@@ -183,8 +183,8 @@ public class OperatorManagementSystem {
     String activityName = activity.getActivityName();
     Location location = activity.getLocation();
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
-    // Setting the details for review (activity name, activity location, review number)
-    review.setDetails(activityName, location, reviewNum);
+    // Setting the details for review (activity name, activity location, review number, activity)
+    review.setDetails(activityName, location, reviewNum, activity);
     ;
 
     // Add review to reviewList
@@ -212,7 +212,7 @@ public class OperatorManagementSystem {
     Location location = activity.getLocation();
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
     // Setting the details for review (activity name, activity location, review number)
-    review.setDetails(activityName, location, reviewNum);
+    review.setDetails(activityName, location, reviewNum, activity);
 
     // Add review to reviewList
     this.reviewList.addToList(review);
