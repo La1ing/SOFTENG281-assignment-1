@@ -87,7 +87,7 @@ public class ReviewList extends ListTypes<Review> {
       if (review.getReviewId().equals(reviewId)) {
         if (review instanceof ExpertReview) {
           // Case for if review is expert
-          ((ExpertReview) review).setImage(image);
+          ((ExpertReview) review).addImage(image);
           MessageCli.REVIEW_IMAGE_ADDED.printMessage(image, reviewId);
           return;
         } else {

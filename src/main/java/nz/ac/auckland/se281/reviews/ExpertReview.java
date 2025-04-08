@@ -1,17 +1,19 @@
 package nz.ac.auckland.se281.reviews;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.MessageCli;
 import nz.ac.auckland.se281.Types;
 
 public class ExpertReview extends Review {
   // NEED TO IMPLEMENT IMAGE UPLOADING
   private boolean recommend;
-  private String image;
+  private ArrayList<String> images;
 
   public ExpertReview(
       String activityId, String name, Integer rating, String comment, String recommend) {
     super(activityId, name, rating, comment);
     this.reviewType = Types.ReviewType.EXPERT;
+    this.images = new ArrayList<>();
     switch (recommend) {
       case "y":
         this.recommend = true;
@@ -22,8 +24,8 @@ public class ExpertReview extends Review {
     }
   }
 
-  public void setImage(String image) {
-    this.image = image;
+  public void addImage(String image) {
+    this.images.add(image);
   }
 
   @Override
@@ -32,8 +34,12 @@ public class ExpertReview extends Review {
     if (this.recommend) {
       MessageCli.REVIEW_ENTRY_RECOMMENDED.printMessage();
     }
-    if (this.image != null) {
-      MessageCli.REVIEW_ENTRY_IMAGES.printMessage(this.image);
+    if (this.images != null) {
+      String imageString = images.get(0);
+      for (int i = 1; i < images.size(); i++) {
+        imageString += ("," + images.get(i));
+      }
+      MessageCli.REVIEW_ENTRY_IMAGES.printMessage(imageString);
     }
   }
 }
