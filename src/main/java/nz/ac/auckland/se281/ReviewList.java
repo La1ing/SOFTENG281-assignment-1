@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.Types.Location;
 import nz.ac.auckland.se281.reviews.ExpertReview;
 import nz.ac.auckland.se281.reviews.PrivateReview;
 import nz.ac.auckland.se281.reviews.PublicReview;
@@ -118,6 +119,21 @@ public class ReviewList extends ListTypes<Review> {
         Review review = this.getEntry(i);
         review.printDetails();
       }
+    }
+  }
+
+  public void rankActivities(Location location) {
+    ArrayList<Review> matchingReview = new ArrayList<>();
+    for (Review review : this.list) {
+      if (review.getlocation().equals(location)) {
+        // DUMMY CASE, NEEX FIXING
+        matchingReview.add(review);
+      }
+    }
+    // Checking if matching reviews is empty
+    if (matchingReview.isEmpty()) {
+      MessageCli.NO_REVIEWED_ACTIVITIES.printMessage(location.toString());
+      return;
     }
   }
 }

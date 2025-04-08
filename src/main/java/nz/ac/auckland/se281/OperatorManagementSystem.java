@@ -254,5 +254,14 @@ public class OperatorManagementSystem {
     reviewList.uploadingImage(reviewId, imageName);
   }
 
-  public void displayTopActivities() {}
+  public void displayTopActivities() {
+    reviewList.rankActivities(Types.Location.AKL);
+    reviewList.rankActivities(Types.Location.HLZ);
+    reviewList.rankActivities(Types.Location.TRG);
+    reviewList.rankActivities(Types.Location.TUO);
+    reviewList.rankActivities(Types.Location.WLG);
+    reviewList.rankActivities(Types.Location.NSN);
+    reviewList.rankActivities(Types.Location.CHC);
+    reviewList.rankActivities(Types.Location.DUD);
+  }
 }

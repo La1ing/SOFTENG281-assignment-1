@@ -39,10 +39,13 @@ public abstract class Review {
     return this.activityId;
   }
 
-  // public void setReviewId(int reviewNum) {
-  //   this.reviewNum = reviewNum;
-  //   this.reviewId = this.activityId + "-R" + Integer.toString(reviewNum);
-  // }
+  public String getActivityName() {
+    return this.activityName;
+  }
+
+  public Location getlocation() {
+    return this.location;
+  }
 
   public String getReviewId() {
     return this.reviewId;
