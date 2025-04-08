@@ -45,7 +45,11 @@ public class Activity extends Operator {
   }
 
   public ArrayList<String> getActivityDetails() {
+    // Details contains the english/te reo/abbrveation of the location, activity name and type
+    // Initialising details
     ArrayList<String> details = new ArrayList<>();
+
+    // Adding details
     details.add(this.location.getNameEnglish());
     details.add(this.location.getNameTeReo());
     details.add(this.location.getLocationAbbreviation());

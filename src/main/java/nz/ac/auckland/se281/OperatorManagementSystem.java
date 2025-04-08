@@ -255,6 +255,7 @@ public class OperatorManagementSystem {
   }
 
   public void displayTopActivities() {
+    // Calling rankActivities for each location
     reviewList.rankActivities(Types.Location.AKL);
     reviewList.rankActivities(Types.Location.HLZ);
     reviewList.rankActivities(Types.Location.TRG);

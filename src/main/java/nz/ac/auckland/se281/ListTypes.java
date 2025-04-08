@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 
-public abstract class ListTypes<Type> {
+public abstract class ListTypes<T> {
   /*
   ListTypes covers:
   - Adding to list
@@ -12,7 +12,7 @@ public abstract class ListTypes<Type> {
   - Searching by id
   */
 
-  protected ArrayList<Type> list;
+  protected ArrayList<T> list;
 
   protected abstract ArrayList<Integer> getMatchingEntries(String keyword);
 
@@ -20,7 +20,7 @@ public abstract class ListTypes<Type> {
     this.list = new ArrayList<>();
   }
 
-  public void addToList(Type obj) {
+  public void addToList(T obj) {
     this.list.add(obj);
   }
 
@@ -28,7 +28,7 @@ public abstract class ListTypes<Type> {
     return this.list.isEmpty();
   }
 
-  public Type getEntry(int i) {
+  public T getEntry(int i) {
     return this.list.get(i);
   }
 
