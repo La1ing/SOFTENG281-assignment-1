@@ -32,5 +32,8 @@ public class ExpertReview extends Review {
     if (this.recommend) {
       MessageCli.REVIEW_ENTRY_RECOMMENDED.printMessage();
     }
+    if (this.image != null) {
+      MessageCli.REVIEW_ENTRY_IMAGES.printMessage(this.image);
+    }
   }
 }
