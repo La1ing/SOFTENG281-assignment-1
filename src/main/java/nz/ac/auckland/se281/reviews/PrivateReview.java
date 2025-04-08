@@ -23,6 +23,11 @@ public class PrivateReview extends Review {
     }
   }
 
+  public void setResolveStatus(String response) {
+    this.followUp = false;
+    this.response = response;
+  }
+
   @Override
   public void printDetails() {
     super.printDetails();

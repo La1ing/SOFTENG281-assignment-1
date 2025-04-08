@@ -67,7 +67,8 @@ public class ReviewList extends ListTypes<Review> {
       if (review.getReviewId().equals(reviewId)) {
         if (review instanceof PrivateReview) {
           // Case for if review is private
-          // NEED IMPLEMENTATION
+          ((PrivateReview) review).setResolveStatus(response);
+          MessageCli.REVIEW_RESOLVED.printMessage(reviewId);
           return;
         } else {
           // If review found but not private
