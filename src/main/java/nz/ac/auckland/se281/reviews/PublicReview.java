@@ -8,7 +8,7 @@ public class PublicReview extends Review {
   private boolean endorsed;
 
   public PublicReview(String activityId, String name, String anon, Integer rating, String comment) {
-    super(activityId, name, rating, comment);
+    super(activityId, name, rating, comment); // Inhereting from reivew parent class
     this.reviewType = Types.ReviewType.PUBLIC;
     switch (anon) {
       case "y":

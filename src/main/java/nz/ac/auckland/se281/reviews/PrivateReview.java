@@ -10,7 +10,7 @@ public class PrivateReview extends Review {
 
   public PrivateReview(
       String activityId, String name, String email, Integer rating, String comment, String follow) {
-    super(activityId, name, rating, comment);
+    super(activityId, name, rating, comment); // Inhereting from review parent class
     this.reviewType = Types.ReviewType.PRIVATE;
     this.email = email;
     switch (follow) {

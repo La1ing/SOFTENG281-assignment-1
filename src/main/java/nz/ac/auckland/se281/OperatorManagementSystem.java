@@ -148,9 +148,11 @@ public class OperatorManagementSystem {
         new PublicReview(
             activityId, options[0], options[1], Integer.valueOf(options[2]), options[3]);
 
+    String activityName = activity.getActivityName();
+    Location location = activity.getLocation();
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
-    // Setting the review number & id for reivew
-    review.setReviewId(reviewNum);
+    // Setting the details for review (activity name, activity location, review number)
+    review.setDetails(activityName, location, reviewNum);
 
     // Add review to reviewList
     this.reviewList.addToList(review);
@@ -178,9 +180,12 @@ public class OperatorManagementSystem {
             options[3],
             options[4]);
 
+    String activityName = activity.getActivityName();
+    Location location = activity.getLocation();
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
-    // Setting the review number & id for reivew
-    review.setReviewId(reviewNum);
+    // Setting the details for review (activity name, activity location, review number)
+    review.setDetails(activityName, location, reviewNum);
+    ;
 
     // Add review to reviewList
     this.reviewList.addToList(review);
@@ -203,9 +208,11 @@ public class OperatorManagementSystem {
         new ExpertReview(
             activityId, options[0], Integer.valueOf(options[1]), options[2], options[3]);
 
+    String activityName = activity.getActivityName();
+    Location location = activity.getLocation();
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
-    // Setting the review number & id for reivew
-    review.setReviewId(reviewNum);
+    // Setting the details for review (activity name, activity location, review number)
+    review.setDetails(activityName, location, reviewNum);
 
     // Add review to reviewList
     this.reviewList.addToList(review);
@@ -247,7 +254,5 @@ public class OperatorManagementSystem {
     reviewList.uploadingImage(reviewId, imageName);
   }
 
-  public void displayTopActivities() {
-    // TODO implement
-  }
+  public void displayTopActivities() {}
 }

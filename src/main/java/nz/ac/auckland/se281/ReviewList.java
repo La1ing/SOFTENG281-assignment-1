@@ -15,6 +15,7 @@ public class ReviewList extends ListTypes<Review> {
   public int revsInSameAct(String activityId) {
     int sameAct = 0;
     for (Review review : this.list) {
+      // Checking if activitiyId matches
       if (review.getActivityId().equals(activityId)) {
         sameAct++;
       }
@@ -27,21 +28,6 @@ public class ReviewList extends ListTypes<Review> {
     ArrayList<Integer> indexes = new ArrayList<>();
 
     return indexes;
-  }
-
-  public Integer getReviewIndex(String reviewId) {
-    for (int i = 0; i < this.list.size(); i++) {
-      Review review = this.list.get(i);
-      if (review.getReviewId().equals(reviewId)) {
-        if (review.getReviewType() == Types.ReviewType.PRIVATE
-            || review.getReviewType() == Types.ReviewType.EXPERT) {
-          return 0;
-        } else {
-          return 1;
-        }
-      }
-    }
-    return -1;
   }
 
   public void settingEndorsement(String reviewId) {
