@@ -244,7 +244,7 @@ public class OperatorManagementSystem {
   }
 
   public void uploadReviewImage(String reviewId, String imageName) {
-    // TODO implement
+    reviewList.uploadingImage(reviewId, imageName);
   }
 
   public void displayTopActivities() {

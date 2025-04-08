@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import nz.ac.auckland.se281.reviews.ExpertReview;
 import nz.ac.auckland.se281.reviews.PrivateReview;
 import nz.ac.auckland.se281.reviews.PublicReview;
 import nz.ac.auckland.se281.reviews.Review;
@@ -73,6 +74,25 @@ public class ReviewList extends ListTypes<Review> {
         } else {
           // If review found but not private
           MessageCli.REVIEW_NOT_RESOLVED.printMessage(reviewId);
+          return;
+        }
+      }
+    }
+    // No review found for reviewid
+    MessageCli.REVIEW_NOT_FOUND.printMessage(reviewId);
+  }
+
+  public void uploadingImage(String reviewId, String image) {
+    for (Review review : this.list) {
+      if (review.getReviewId().equals(reviewId)) {
+        if (review instanceof ExpertReview) {
+          // Case for if review is expert
+          ((ExpertReview) review).setImage(image);
+          MessageCli.REVIEW_IMAGE_ADDED.printMessage(image, reviewId);
+          return;
+        } else {
+          // If review found but not expert
+          MessageCli.REVIEW_IMAGE_NOT_ADDED_NOT_EXPERT.printMessage(reviewId);
           return;
         }
       }

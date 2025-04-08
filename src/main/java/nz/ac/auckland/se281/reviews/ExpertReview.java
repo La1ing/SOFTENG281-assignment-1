@@ -6,6 +6,7 @@ import nz.ac.auckland.se281.Types;
 public class ExpertReview extends Review {
   // NEED TO IMPLEMENT IMAGE UPLOADING
   private boolean recommend;
+  private String image;
 
   public ExpertReview(
       String activityId, String name, Integer rating, String comment, String recommend) {
@@ -19,6 +20,10 @@ public class ExpertReview extends Review {
         this.recommend = false;
         break;
     }
+  }
+
+  public void setImage(String image) {
+    this.image = image;
   }
 
   @Override
