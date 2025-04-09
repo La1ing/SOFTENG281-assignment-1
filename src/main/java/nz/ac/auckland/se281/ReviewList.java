@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import nz.ac.auckland.se281.Types.Location;
 import nz.ac.auckland.se281.reviews.ExpertReview;
 import nz.ac.auckland.se281.reviews.PrivateReview;
@@ -124,7 +125,7 @@ public class ReviewList extends ListTypes<Review> {
 
   public void rankActivities(Location location) {
     ArrayList<Review> matchingReviews = new ArrayList<>();
-    ArrayList<Activity> matchingActivities = new ArrayList<>();
+    HashSet<Activity> matchingActivities = new HashSet<>();
 
     for (Review review : this.list) {
       // Checking if review is not private and if location mathces
