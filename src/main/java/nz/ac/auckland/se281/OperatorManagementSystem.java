@@ -227,7 +227,7 @@ public class OperatorManagementSystem {
     Activity activity = activityList.getMatchingActivity(activityId);
 
     if (activity == null) {
-      MessageCli.REVIEW_NOT_ADDED_INVALID_ACTIVITY_ID.printMessage(activityId);
+      MessageCli.ACTIVITY_NOT_FOUND.printMessage(activityId);
       return;
     }
 
