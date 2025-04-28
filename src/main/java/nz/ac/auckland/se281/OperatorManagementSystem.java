@@ -185,7 +185,6 @@ public class OperatorManagementSystem {
     int reviewNum = 1 + reviewList.revsInSameAct(activityId);
     // Setting the details for review (activity name, activity location, review number, activity)
     review.setDetails(activityName, location, reviewNum, activity);
-    ;
 
     // Add review to reviewList
     this.reviewList.addToList(review);

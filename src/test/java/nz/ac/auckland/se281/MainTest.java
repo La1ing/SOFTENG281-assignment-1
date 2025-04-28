@@ -14,9 +14,9 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-  // MainTest.Task1.class,
-  // MainTest.Task2.class,
-  // MainTest.Task3.class,
+  MainTest.Task1.class,
+  MainTest.Task2.class,
+  MainTest.Task3.class,
   MainTest.YourTests.class, // Uncomment this line to run your own tests
   MainTest.YourTask2Tests.class,
   MainTest.YourTask3Tests.class,
@@ -2334,7 +2334,7 @@ public class MainTest {
               CREATE_27_ACTIVITIES,
               ADD_PRIVATE_REVIEW,
               "WACT-AKL-001-001",
-              options("Felicia", "felicia@email.com", "5", "Great", "n"),
+              options("Felicia", "felicia@email.com", "5", "Great", "y"),
               RESOLVE_REVIEW,
               "WACT-AKL-001-001-R1",
               "'So sorry to hear that!'",
@@ -2356,7 +2356,7 @@ public class MainTest {
               CREATE_27_ACTIVITIES,
               ADD_PRIVATE_REVIEW,
               "WACT-AKL-001-001",
-              options("Felicia", "felicia@email.com", "5", "Great", "n"),
+              options("Felicia", "felicia@email.com", "5", "Great", "y"),
               RESOLVE_REVIEW,
               "WACT-AKL-001-001-R1",
               "'So sorry to hear that!'",
@@ -2412,7 +2412,7 @@ public class MainTest {
     // locations print the same message (disregarding the location itself)
     @Test
     public void T3_XX_display_top_activities_no_reviews() throws Exception {
-      runCommands(CREATE_14_OPERATORS, CREATE_27_ACTIVITIES, DISPLAY_TOP_ACTIVITIES, EXIT);
+      runCommands(unpack(CREATE_14_OPERATORS, CREATE_27_ACTIVITIES, DISPLAY_TOP_ACTIVITIES, EXIT));
 
       assertContains("No reviewed activities found in Auckland | Tāmaki Makaurau.");
       assertContains("No reviewed activities found in Hamilton | Kirikiriroa.");
