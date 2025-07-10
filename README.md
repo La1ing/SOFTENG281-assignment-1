@@ -1,3 +1,3 @@
 # Assignment 1
 
-You will find instructions for this assignment on the course website.
+First assignment of SOFTENG281, which is a system that reviews tourist destinations.
